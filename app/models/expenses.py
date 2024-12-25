@@ -1,6 +1,5 @@
 from app.extensions import db
 
-
 class Expenses(db.Model):
     __tablename__ = "expenses"
     id = db.Column("ExpensesID", db.Integer, primary_key=True)
