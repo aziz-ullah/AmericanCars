@@ -6,9 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-<<<<<<< HEAD
-# Virtual environment
-=======
 # Distribution / packaging
 .Python
 build/
@@ -34,6 +31,7 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+.gitignore
 
 # Installer logs
 pip-log.txt
@@ -127,7 +125,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
->>>>>>> bdef608956f0a950117d4d785696ff487c88588b
 env/
 venv/
 ENV/

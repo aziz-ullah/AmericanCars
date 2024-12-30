@@ -14,3 +14,17 @@ class LoginBLC:
         except Exception as e:
             session.rollback()
             raise e
+        
+    @staticmethod
+    def update_user(args):
+        session:Session = LoginRepository.get_session()
+        
+        try:
+            result = LoginRepository.update_user(args,session)
+            session.commit()
+            return result
+        except Exception as e:
+            session.rollback()
+            raise e
+        
+    

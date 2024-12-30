@@ -1,10 +1,11 @@
 from flask import Blueprint,jsonify
 from webargs.flaskparser import use_args
-from app.schemas.UserSchema import UserSchema, LoginSchema
+from app.schemas.UserSchema import UpdateUserSchema, UserSchema, LoginSchema
 from app.bl.LoginBLC import LoginBLC
 from app.bl.UserBLC import UserBLC
 from flask_jwt_extended import get_jwt, jwt_required, get_jwt_identity, current_user
 from sqlalchemy.exc import IntegrityError
+from webargs import fields
 
 bp = Blueprint('user',__name__)
 
@@ -39,3 +40,18 @@ def login(args):
         return jsonify({"Error":e.orig.args[1]}), 422
     except Exception as e:
         return jsonify(str(e)),422
+    
+@bp.route('/user', methods=['PUT'])
+@use_args(UpdateUserSchema(), location='json')
+def update_user(args):
+    """Update User"""
+    
+    try:
+        result = LoginBLC.update_user(args)
+        
+        return jsonify({"result":result})
+    except IntegrityError as e:
+        return jsonify({"Error":e.orig.args[1]}), 422
+    except Exception as e:
+        return jsonify(str(e)),422
+    

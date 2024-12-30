@@ -20,3 +20,9 @@ class UserSchema(SQLAlchemySchema):
 class LoginSchema(Schema):
     username = fields.String(required=True)
     password = fields.String( required=True)
+    
+class UpdateUserSchema(Schema):
+    id = fields.Integer(required=True)
+    username = fields.String()
+    password = fields.String(load_only=True)
+    role = fields.String()
